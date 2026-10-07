@@ -1,0 +1,57 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface ModelListener {
+    +onDataChanged(originalText : String, invertedText : String) : void
+}
+
+class InvertorModel {
+    -originalText : String
+    -invertedText : String
+    -listeners : List<ModelListener>
+    +addListener(listener : ModelListener) : void
+    +processSentence(sentence : String) : void
+    -invertWords(input : String) : String
+    -notifyListeners() : void
+    +getOriginalText() : String
+    +getInvertedText() : String
+}
+
+class MainFrame {
+    -originalLabel : JLabel
+    -invertedArea : JTextArea
+    -inputButton : JButton
+    -lastInputData : String
+    +setInputButtonListener(listener : ActionListener) : void
+    +showInputDialog() : String
+    +setLastInputData(text : String) : void
+    +showError(message : String) : void
+    +onDataChanged(originalText : String, invertedText : String) : void
+}
+
+class InputDialog {
+    -textField : JTextField
+    -confirmed : boolean
+    +isConfirmed() : boolean
+    +getInputText() : String
+}
+
+class InvertorController {
+    -model : InvertorModel
+    -view : MainFrame
+    -handleInputData() : void
+}
+
+class Main {
+    +{static} main(args : String[]) : void
+}
+
+ModelListener <|.. MainFrame : реализует
+InvertorModel o-- ModelListener : оповещает (Active MVC)
+InvertorController --> InvertorModel : управляет
+InvertorController --> MainFrame : обрабатывает события
+MainFrame ..> InputDialog : создает
+Main ..> InvertorModel : создает
+Main ..> MainFrame : создает
+Main ..> InvertorController : связывает
+@enduml
