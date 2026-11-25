@@ -34,7 +34,7 @@
 | [ADR-0008](adr/ADR-0008-ssrf-url-validation.md) | Поэтапная защита от SSRF | accepted (этап 2 — в 1.1) | REQ-SEC-005, REQ-FUNC-001, REQ-FUNC-002 |
 | [ADR-0009](adr/ADR-0009-telegram-notifications.md) | Уведомления в Telegram через Bot API с long polling | accepted | REQ-FUNC-011, REQ-FUNC-004, REQ-REL-001 |
 
-## Итог согласования (лабораторная работа №4)
+## Итог согласования
 
 - Срок версии 1.0 — 10 недель (23.11.2026 — 29.01.2027), не сдвигается.
 - Объём версии 1.0 — 249 ч, версии 1.1 — 33 ч.
